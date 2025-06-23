@@ -19,6 +19,14 @@ With the help of servos at each joint, the robotic arm is extremely flexible. Yo
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/y3VAmNlER5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+## Description
+My first milestone was the assembly of the robotic arm and the joycon but before assembling I had to test each individual component. There are 3 main components of the robotic arm: the power source, the arduino nano board, and the arm itself. For the power source, I used 5 standard double a batteries and because I used a different power source than what was given. I had to solder the battery holder's wires to the arduino. The Nano is placed in the middle of the arm and basically acts like the brain because all the wires ultimately connect to it. How it'll work is that when I move the joystick it'll send a signal to the shield and the arduino will use the uploaded code to transmit and electronic signal to the servos.
+
+## Challenges
+Throughout my project I ran in to a major problem. I used a different power source than the default one so I couldnt attach the battery holder on to the board I was provided with. SO I ended up using velcro.
+
+## Next Steps
+
 # Starter Project Milestone
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5hE3g0E7hIk?si=tdlVj-aOWcgm4DSa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -32,9 +40,6 @@ Soldering was difficult because there was a lot to solder and I had learned how 
 
 ## Next Steps
 For my next milestone, I will be moving on to my intensive project.
-
-# Schematics 
-Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
 
 # Code
 Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
@@ -53,21 +58,16 @@ void loop() {
 ```
 # Schematics
 <img src="https://abhimahajan-1.github.io/Abhi_BlueStampPortfolio/schematics_3_revised_2.png" alt="Figure 1: Remote control and servos">
-
-### Figure 1: A visual of the remote control and servos wiring.
+Figure 1: A visual of the remote control and servos wiring.
 
 # Bill of Materials
 
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
+| Cokoino Robot Arm | Contains joycon and a robotic arm | $49.99 | <a href="[https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/](https://www.amazon.com/LK-COKOINO-Compliment-Engineering-Technology/dp/B081FG1JQ1)"> Link </a> |
+| 5 AA Battery Holder | Holds 5 Double A Batteries | $7.99 | <a href="[https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/](https://www.amazon.com/LampVPath-Battery-Holder-Leads-Wires/dp/B07WRQ44YK/ref=sr_1_6?crid=3OUOUDN2BFP73&keywords=5+AA+battery+pack&qid=1689046519&sprefix=5+aa+battery+pack%2Caps%2C158&sr=8-6)"> Link </a> |
 | Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
 | Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
 | Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
 
-# Other Resources/Examples
-One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.
-- [Example 1](https://trashytuber.github.io/YimingJiaBlueStamp/)
-- [Example 2](https://sviatil0.github.io/Sviatoslav_BSE/)
-- [Example 3](https://arneshkumar.github.io/arneshbluestamp/)
 
-To watch the BSE tutorial on how to create a portfolio, click here.
