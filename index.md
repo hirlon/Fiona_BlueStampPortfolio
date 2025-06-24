@@ -17,7 +17,7 @@ With the help of servos at each joint, the robotic arm is extremely flexible. Yo
 
 # First Milestone
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/y3VAmNlER5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Yta8FxtyrU0?si=Dfc-z7vMuS6OD_5c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Description
 My first milestone was the assembly of the robotic arm and the joycon but before assembling I had to test each individual component. There are 3 main components of the robotic arm: the power source, the arduino nano board, and the arm itself. For the power source, I used 5 standard double a batteries and because I used a different power source than what was given. I had to solder the battery holder's wires to the arduino. The Nano is placed in the middle of the arm and basically acts like the brain because all the wires ultimately connect to it. How it'll work is that when I move the joystick it'll send a signal to the shield and the arduino will use the uploaded code to transmit an electronic signal to the servos.
