@@ -11,9 +11,16 @@ With the help of servos at each joint, the robotic arm is extremely flexible. Yo
 
 ![Headstone Image](logo.svg)
   
-# Final Milestone
+# Second Milestone
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/D3Orj-GOAwU?si=ew9-6m_k9eDBSQP9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Description
+
+## Challenges
+
+## Next Steps
+
 
 # First Milestone
 
@@ -133,6 +140,8 @@ void loop() {
 # Schematics
 <img src="https://abhimahajan-1.github.io/Abhi_BlueStampPortfolio/schematics_3_revised_2.png" alt="Figure 1: Remote control and servos">
 Figure 1: A visual of the remote control and servos wiring.
+
+# Protoypes
 
 # Bill of Materials
 
