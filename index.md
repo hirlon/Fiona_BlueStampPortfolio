@@ -13,9 +13,10 @@ With the help of servos at each joint, the robotic arm is extremely flexible. Yo
   
 # Second Milestone
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/D3Orj-GOAwU?si=ew9-6m_k9eDBSQP9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/s6oYnf6QK6A?si=ZWjJvlmnjy_reT9l" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Description
+My second milestone was to program the joystick to be able to move my robotic arm. I used servo functions from the 
 
 ## Challenges
 
