@@ -206,7 +206,7 @@ void loop() {
 ```
 # Schematics
 <img src="https://abhimahajan-1.github.io/Abhi_BlueStampPortfolio/schematics_3_revised_2.png" alt="Figure 1: Remote control and servos">
-Figure 1: A visual of the remote control and servos wiring.
+Figure 1: A visual of the remote control and servos wiring (Taken from COKOINO).
 
 # Protoypes
 
