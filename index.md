@@ -10,25 +10,39 @@ With the help of servos at each joint, the robotic arm is extremely flexible. Yo
 
 
 ![Headstone Image](logo.svg)
-  
+
+# Third Milestone
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/s6oYnf6QK6A?si=ZWjJvlmnjy_reT9l" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Description
+
+
+## Challenges
+
+
+## Next Steps
+
+
 # Second Milestone
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/s6oYnf6QK6A?si=ZWjJvlmnjy_reT9l" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Description
-My second milestone was to program the joystick to be able to move my robotic arm. I used servo functions from the 
+My second milestone was to program the joystick to be able to move my robotic arm. The joycons are able to control the movements of the servos because of the code functions from the servo library. The arduino helps the computer to read which servo should be moved based on the movement of the joycon. 
 
 ## Challenges
+One of the challenges I faced during this milestone was the servo that was connected to the claw started moving eratically. I assumed it was a problem within the code but after thorougly checking it, I found nothing wrong. Another problem I considered was the servo was not receiving enough energy to power it. Eventually I realized that there was a problem with the servo itself.   
 
 ## Next Steps
-
+For my last milestone, I will be connecting the robotic arm to an HC-05 via bluetooth so it'd be able to be controlled by a phone using the MIT inventory app.
 
 # First Milestone
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Yta8FxtyrU0?si=a-qyl68ZN326yS7z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Description
-My first milestone was the assembly of the robotic arm and the joycon but before assembling I had to test each individual component. There are 3 main components of the robotic arm: the power source, the arduino nano board, and the arm itself. For the power source, I used 5 standard double a batteries and because I used a different power source than what was given. I had to solder the battery holder's wires to the arduino. The Nano is placed in the middle of the arm and basically acts like the brain because all the wires ultimately connect to it. How it'll work is that when I move the joystick it'll send a signal to the shield and the arduino will use the uploaded code to transmit an electronic signal to the servos.
+My first milestone was the assembly of the robotic arm and the joycon but before assembling I had to test each individual component. There are 3 main components of the robotic arm: the power source, the arduino nano board, and the arm itself. For the power source, I used 5 standard double a batteries and because I used a different power source than what was given (2 lithium ion batteries). I had to cut the battery holder's wire and solder its wires to the arduino. The Nano is placed in the base of the arm and basically acts like the brain because all the wires ultimately connect to it. Once my project is fully programmed, when I move the joystick it'll send a signal to the shield and the arduino will use the uploaded code to transmit an electronic signal to the servos.
 
 ## Challenges
 Throughout my project I ran in to a major problem. I used a different power source than the default one so I couldnt attach the battery holder on to the board I was provided with. So I ended up using velcro.
