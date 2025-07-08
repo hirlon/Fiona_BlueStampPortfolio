@@ -29,7 +29,8 @@ With the help of servos at each joint, the robotic arm is extremely flexible. Yo
 <iframe width="560" height="315" src="https://www.youtube.com/embed/s6oYnf6QK6A?si=ZWjJvlmnjy_reT9l" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Description
-My second milestone was to program the joystick to be able to move my robotic arm. The joycons are able to control the movements of the servos because of the code functions from the servo library. The arduino helps the computer to read which servo should be moved based on the movement of the joycon. 
+My second milestone was to program the joystick to be able to move my robotic arm. The joysticks send analog values to the arduino nano because each joystick produce a continuous range of voltage levels that represent how far the stick is pushed. Unlike digital values which are HIGH or LOW (1 or 0), analog values are much more precise which makes the movement of the robotic arm much more smoother. In my code, I use specific functions from the code library to translate these analog readings into servo movements. For example, the arm.up(speed) and arm.down(speed) move the arm up and down. arm.left(speed) and arm.right(speed) rotate the base and arm.open(speed) arm.close(speed) open and closes the claw of the robotic arm. Once the arduino knows what to perform, it generates a PWM signal for each servo. PWM works by rapidly sending on and off electrical signals. The length of the on time within each cycle determines the position of the servo.
+
 
 ## Challenges
 One of the challenges I faced during this milestone was the servo that was connected to the claw started moving eratically. I assumed it was a problem within the code but after thorougly checking it, I found nothing wrong. Another problem I considered was the servo was not receiving enough energy to power it. Eventually I realized that there was a problem with the servo itself.   
@@ -37,35 +38,52 @@ One of the challenges I faced during this milestone was the servo that was conne
 ## Next Steps
 For my last milestone, I will be connecting the robotic arm to an HC-05 via bluetooth so it'd be able to be controlled by a phone using the MIT inventory app.
 
-# First Milestone
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Yta8FxtyrU0?si=a-qyl68ZN326yS7z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-## Description
-My first milestone was the assembly of the robotic arm and the joycon but before assembling I had to test each individual component. There are 3 main components of the robotic arm: the power source, the arduino nano board, and the arm itself. For the power source, I used 5 standard double a batteries and because I used a different power source than what was given (2 lithium ion batteries). I had to cut the battery holder's wire and solder its wires to the arduino. The Nano is placed in the base of the arm and basically acts like the brain because all the wires ultimately connect to it. Once my project is fully programmed, when I move the joystick it'll send a signal to the shield and the arduino will use the uploaded code to transmit an electronic signal to the servos.
-
-## Challenges
-Throughout my project I ran in to a major problem. I used a different power source than the default one so I couldnt attach the battery holder on to the board I was provided with. So I ended up using velcro.
-
-## Next Steps
-Next I plan to compile and upload the code to be able to control the robotic arm.
-
-# Starter Project Milestone
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/5hE3g0E7hIk?si=tdlVj-aOWcgm4DSa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-## Description
-For my start project, I chose the RBG slides. I took digital design/fabrication classes prior to this program so I had experience working with LED lights. I chose
-this starter project because it felt comfortable and familiar. This kit includes a PCB and LED components, LEDs are semiconductor devices that emit light when an electric current passes through them. Each LED represents one of the primary colors (Red, Green, and Blue). By controlling the intensity of each LED, you can create a wide range of colors. 
-
-## Challenges
-Soldering was difficult because there was a lot to solder and I had learned how to right before starting this project. 
-
-## Next Steps
-For my next milestone, I will be moving on to my intensive project.
-
-# Code
-```c++
+## Code
+/*
+ * This code applies to cokoino mechanical arm
+ * Through this link you can download the source code:
+ * https://github.com/Cokoino/CKK0006
+ * Company web site:
+ * http://cokoino.com/
+ *                                     ________
+ *                         ----|servo4| 
+ *                        |            --------
+ *                    |servo3|   
+ *                        |
+ *                        |
+ *                    |servo2|
+ *                        |
+ *                        |
+ *                  ___________
+ *                  |  servo1 |
+ *         ____________________
+ *         ____________________
+ * Fanctions:
+ * arm.servo1.read();   //read the servo of angle
+ * arm.servo2.read();
+ * arm.servo3.read();
+ * arm.servo4.read();
+ * 
+ * arm.servo1.write(angle);   //servo run
+ * arm.servo2.write(angle);
+ * arm.servo3.write(angle);
+ * arm.servo4.write(angle);
+ * 
+ * arm.left(speed);    //perform the action 
+ * arm.right(speed);
+ * arm.up(speed);
+ * arm.down(speed);
+ * arm.open(speed);
+ * arm.close(speed);
+ * 
+ * arm.captureAction();    //capture the current action,return pointer array
+ * arm.do_action(int *p,int speed);  //P is a pointer to the array
+ * 
+ * arm.JoyStickL.read_x(); //Returns joystick numerical
+ * arm.JoyStickL.read_y();
+ * arm.JoyStickR.read_x();
+ * arm.JoyStickR.read_y();
+ */
 #include "src/CokoinoArm.h"
 #define buzzerPin 9
 
@@ -203,7 +221,34 @@ void loop() {
   C_action();
   Do_action();
 }
-```
+
+# First Milestone
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Yta8FxtyrU0?si=a-qyl68ZN326yS7z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Description
+My first milestone was the assembly of the robotic arm and the joycon but before assembling I had to test each individual component. There are 3 main components of the robotic arm: the power source, the arduino nano board, and the arm itself. For the power source, I used 5 standard double a batteries and because I used a different power source than what was given (2 lithium ion batteries). I had to cut the battery holder's wire and solder its wires to the arduino. The Nano is placed in the base of the arm and basically acts like the brain because all the wires ultimately connect to it. Once my project is fully programmed, when I move the joystick it'll send a signal to the shield and the arduino will use the uploaded code to transmit an electronic signal to the servos. 
+
+## Challenges
+Throughout my project I ran in to a major problem. I used a different power source than the default one so I couldnt attach the battery holder on to the board I was provided with. So I ended up using velcro.
+
+## Next Steps
+Next I plan to compile and upload the code to be able to control the robotic arm.
+
+# Starter Project Milestone
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5hE3g0E7hIk?si=tdlVj-aOWcgm4DSa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Description
+For my start project, I chose the RBG slides. I took digital design/fabrication classes prior to this program so I had experience working with LED lights. I chose
+this starter project because it felt comfortable and familiar. This kit includes a PCB and LED components, LEDs are semiconductor devices that emit light when an electric current passes through them. Each LED represents one of the primary colors (Red, Green, and Blue). By controlling the intensity of each LED, you can create a wide range of colors. 
+
+## Challenges
+Soldering was difficult because there was a lot to solder and I had learned how to right before starting this project. 
+
+## Next Steps
+For my next milestone, I will be moving on to my intensive project.
+
 # Schematics
 <img src="https://abhimahajan-1.github.io/Abhi_BlueStampPortfolio/schematics_3_revised_2.png" alt="Figure 1: Remote control and servos">
 Figure 1: A visual of the remote control and servos wiring (Taken from COKOINO).
