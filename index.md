@@ -6,7 +6,7 @@ With the help of servos at each joint, the robotic arm is extremely flexible. Yo
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
-| Fiona L | The Nightingale-Bamford School | Robotics | Incoming Junior
+| Fiona L | The Nightingale-Bamford School | Robotics | Incoming Junior |
 
 
 ![Headstone Image](logo.svg)
@@ -24,13 +24,148 @@ With the help of servos at each joint, the robotic arm is extremely flexible. Yo
 ## Next Steps
 
 
-# Second Milestone
+## Code
+#include "src/CokoinoArm.h"
+#include <SoftwareSerial.h>
+#define buzzerPin 9
 
+int state=0;
+CokoinoArm arm;
+int xL,yL,xR,yR;
+SoftwareSerial BTSerial(3,2);
+const int act_max=10;    //Default 10 action,4 the Angle of servo
+int act[act_max][4];    //Only can change the number of action
+int num=0,num_do=0;
+void turnUD(void){
+  if(xL!=512){
+    if(0<=xL && xL<=100){arm.up(10);return;}
+    if(900<xL && xL<=1024){arm.down(10);return;} 
+    if(100<xL && xL<=200){arm.up(20);return;}
+    if(800<xL && xL<=900){arm.down(20);return;}
+    if(200<xL && xL<=300){arm.up(25);return;}
+    if(700<xL && xL<=800){arm.down(25);return;}
+    if(300<xL && xL<=400){arm.up(30);return;}
+    if(600<xL && xL<=700){arm.down(30);return;}
+    if(400<xL && xL<=480){arm.up(35);return;}
+    if(540<xL && xL<=600){arm.down(35);return;} 
+    }
+}
+void turnLR(void){
+  if(yL!=512){
+    if(0<=yL && yL<=100){arm.right(0);return;}
+    if(900<yL && yL<=1024){arm.left(0);return;}  
+    if(100<yL && yL<=200){arm.right(5);return;}
+    if(800<yL && yL<=900){arm.left(5);return;}
+    if(200<yL && yL<=300){arm.right(10);return;}
+    if(700<yL && yL<=800){arm.left(10);return;}
+    if(300<yL && yL<=400){arm.right(15);return;}
+    if(600<yL && yL<=700){arm.left(15);return;}
+    if(400<yL && yL<=480){arm.right(20);return;}
+    if(540<yL && yL<=600){arm.left(20);return;}
+  }
+}
+void turnCO(void){
+  if(arm.servo4.read()>7){
+    if(0<=xR && xR<=100){arm.close(0);return;}
+    if(900<xR && xR<=1024){arm.open(0);return;} 
+    if(100<xR && xR<=200){arm.close(5);return;}
+    if(800<xR && xR<=900){arm.open(5);return;}
+    if(200<xR && xR<=300){arm.close(10);return;}
+    if(700<xR && xR<=800){arm.open(10);return;}
+    if(300<xR && xR<=400){arm.close(15);return;}
+    if(600<xR && xR<=700){arm.open(15);return;}
+    if(400<xR && xR<=480){arm.close(20);return;}
+    if(540<xR && xR<=600){arm.open(20);return;} 
+    }
+  else{arm.servo4.write(8);
+
+  }  
+}
+void date_processing(int *x,int *y){
+  if(abs(512-*x)>abs(512-*y))
+    {*y = 512;}
+  else
+    {*x = 512;}
+}
+
+void buzzer(int H,int L){
+  while(yR<420){
+    digitalWrite(buzzerPin,LOW);
+    delayMicroseconds(H);
+    digitalWrite(buzzerPin,LOW);
+    delayMicroseconds(L);
+    }
+  while(yR>600){
+    digitalWrite(buzzerPin,LOW);
+    delayMicroseconds(H);
+    digitalWrite(buzzerPin,LOW);
+    delayMicroseconds(L);
+    }
+}
+
+void C_action(void){
+  if(yR>800){
+    int *p;
+    p=arm.captureAction();
+    for(char i=0;i<4;i++){
+    act[num][i]=*p;
+    p=p+1;     
+    }
+    num++;
+  }
+}
+
+
+void setup() {
+  Serial.begin(9600);
+  BTSerial.begin(9600);
+  //arm of servo motor connection pins
+  arm.ServoAttach(4,5,6,7);
+  arm.servo1.write(90);
+  arm.servo2.write(90);
+  arm.servo3.write(90);
+  arm.servo4.write(90);
+}
+
+void loop() {
+  if(BTSerial.available()>0){
+    state=BTSerial.read();
+  }
+  if(state==1){
+    arm.down(20);
+  }
+  if(state==3){
+    arm.up(20);
+  }
+  if(state==5){
+    arm.left(20);
+  }
+  if(state==7){
+    arm.right(20);
+  }
+  if(state==9){
+    arm.open(20);
+  }
+  if(state==11){
+    arm.close(20);
+  }
+  if(state==13){
+    arm.servo1.write(90);
+    arm.servo2.write(90);
+    arm.servo3.write(90);
+    arm.servo4.write(90);
+  }
+  if(arm.servo4.read()<7){
+    arm.servo4.write(8);
+  }
+  Serial.println(state);
+}
+
+# Second Milestone
 <iframe width="560" height="315" src="https://www.youtube.com/embed/s6oYnf6QK6A?si=ZWjJvlmnjy_reT9l" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Description
 My second milestone was to program the joystick to be able to move my robotic arm. The joysticks send analog values to the arduino nano because each joystick produce a continuous range of voltage levels that represent how far the stick is pushed. Unlike digital values which are HIGH or LOW (1 or 0), analog values are much more precise which makes the movement of the robotic arm much more smoother. In my code, I use specific functions from the code library to translate these analog readings into servo movements. For example, the arm.up(speed) and arm.down(speed) move the arm up and down. arm.left(speed) and arm.right(speed) rotate the base and arm.open(speed) arm.close(speed) open and closes the claw of the robotic arm. Once the arduino knows what to perform, it generates a PWM signal for each servo. PWM works by rapidly sending on and off electrical signals. The length of the on time within each cycle determines the position of the servo.
-
 
 ## Challenges
 One of the challenges I faced during this milestone was the servo that was connected to the claw started moving eratically. I assumed it was a problem within the code but after thorougly checking it, I found nothing wrong. Another problem I considered was the servo was not receiving enough energy to power it. Eventually I realized that there was a problem with the servo itself.   
@@ -39,51 +174,6 @@ One of the challenges I faced during this milestone was the servo that was conne
 For my last milestone, I will be connecting the robotic arm to an HC-05 via bluetooth so it'd be able to be controlled by a phone using the MIT inventory app.
 
 ## Code
-/*
- * This code applies to cokoino mechanical arm
- * Through this link you can download the source code:
- * https://github.com/Cokoino/CKK0006
- * Company web site:
- * http://cokoino.com/
- *                                     ________
- *                         ----|servo4| 
- *                        |            --------
- *                    |servo3|   
- *                        |
- *                        |
- *                    |servo2|
- *                        |
- *                        |
- *                  ___________
- *                  |  servo1 |
- *         ____________________
- *         ____________________
- * Fanctions:
- * arm.servo1.read();   //read the servo of angle
- * arm.servo2.read();
- * arm.servo3.read();
- * arm.servo4.read();
- * 
- * arm.servo1.write(angle);   //servo run
- * arm.servo2.write(angle);
- * arm.servo3.write(angle);
- * arm.servo4.write(angle);
- * 
- * arm.left(speed);    //perform the action 
- * arm.right(speed);
- * arm.up(speed);
- * arm.down(speed);
- * arm.open(speed);
- * arm.close(speed);
- * 
- * arm.captureAction();    //capture the current action,return pointer array
- * arm.do_action(int *p,int speed);  //P is a pointer to the array
- * 
- * arm.JoyStickL.read_x(); //Returns joystick numerical
- * arm.JoyStickL.read_y();
- * arm.JoyStickR.read_x();
- * arm.JoyStickR.read_y();
- */
 #include "src/CokoinoArm.h"
 #define buzzerPin 9
 
@@ -223,7 +313,6 @@ void loop() {
 }
 
 # First Milestone
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Yta8FxtyrU0?si=a-qyl68ZN326yS7z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Description
@@ -253,16 +342,10 @@ For my next milestone, I will be moving on to my intensive project.
 <img src="https://abhimahajan-1.github.io/Abhi_BlueStampPortfolio/schematics_3_revised_2.png" alt="Figure 1: Remote control and servos">
 Figure 1: A visual of the remote control and servos wiring (Taken from COKOINO).
 
-# Protoypes
-
 # Bill of Materials
-
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
 | Cokoino Robot Arm | Contains joycon and a robotic arm | $49.99 | <a href="[https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/](https://www.amazon.com/LK-COKOINO-Compliment-Engineering-Technology/dp/B081FG1JQ1)"> Link </a> |
 | 5 AA Battery Holder | Holds 5 Double A Batteries | $7.99 | <a href="[https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/](https://www.amazon.com/LampVPath-Battery-Holder-Leads-Wires/dp/B07WRQ44YK/ref=sr_1_6?crid=3OUOUDN2BFP73&keywords=5+AA+battery+pack&qid=1689046519&sprefix=5+aa+battery+pack%2Caps%2C158&sr=8-6)"> Link </a> |
-| Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
-| Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
-| Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
 
 
