@@ -19,7 +19,7 @@ With the help of servos at each joint, the robotic arm is extremely flexible. Yo
 For my third milestone I connected my robotic arm to my phone via an HC-05 bluetooth module.
 
 ### HC-05
-<img src="https://m.media-amazon.com/images/I/61CU5YmBsEL._UF894,1000_QL80_.jpg" alt=" ">
+<img width="500" height="350" src="https://m.media-amazon.com/images/I/61CU5YmBsEL._UF894,1000_QL80_.jpg" alt=" ">
 
 In bluetooth communication, there is a master/slave configuration, indicating which device will initiate/control the connection. I set my HC-05 as a slave because I want it to receive connections/signals from my phone which will act as the master. When connecting the bluetooth module, there are 2 modes: AT mode and bluetooth (data) mode. AT mode is used to configure/control the bluetooth module itself and bluetooth mode is just connecting and communicating with other bluetooth devices. In this case, we are using data mode so it can directly exchange data with my phone. The HC-05 also has 6 pins: State, VCC, GND, TXD, RXD, Key. Out of the 6 pins I connected 4 of them: VCC (provides power to the module), GND (ground connection), TXD (transmits data), and RXD (receives data). The TXD pin of one device must be connected to the RXD pin of the other device and vice versa because you cannot have 2 devices receiving/transmitting simultaneously. 
 
