@@ -20,9 +20,13 @@ For my third milestone I connected my robotic arm to my phone via an HC-05 bluet
 
 ### HC-05
 <img style="display: block;-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="https://ci3.googleusercontent.com/mail-img-att/AGAZnRowtwGKRWopoPekq3H21g5ZhhCKHFBDvvaX5JHg28rCVThr8cjJXGbJg4r-MoaoqTT5yYfBrKSE8V4Qi7C1CsxylFyx3TvJTV2jLwzsiLebM7I1lvPpi-ssF2HT9DR4C6eYgGwBU0K0Wlm9s2ZCbzNpyXlIt9DNgAjCIKY6AZPT1QEW0kMpHGCftAiUPHkD-yVRbDMFt6Zif6kDj7jm6VOj84eNHRbzENvyB6nE9s5Y1cTff4kHEy44ZB1YDGEHUQxs5s46H-4xDgFrfFgmf9qwrebgFEtNUmccUv4QpZeVv9VXmC8cTEIXTGjatc0cUG4KbP2jgUat8ZRqvBSntnmf5wXM2TidCOSH-tHR28CU7vrTknWAAA3zE_f8sWXJFf1J1YSXAgucszy9OJBKCI6Ys524ky8D6Ptk3tltkQp9DSKysckpjRTSB_jHQnUGtwXtX7xWCb5PSlma3O5fDVxmN6zyfOYNagLVLW6Ril7x0RzCRdOBMLmlpDZs6yeXn-0IA9swKWQdwAK6FCkMUzr_mlzibxHbgmfUe-qiFmVQeJOC0RZmqprNzEFjrOzSdoHry7GcNr_bm-A3-ZwLyU-GCC5y97KZ_baP1dQPO2wmhz7Qcuf2Z5XhPixdh6uAb-4UnuEgfMs2mJ0GsMEPtNjHPCNDEmD6xqDJZrC78Ca30u_AtNJa3aKjhmuqV-yA7-Ee1WSj-qpjbPKERr7wrQSP4dxz5zWAjl1ARM7cs1h2a6Dabz_-q0fp6oRaG5AIsj-8BXe80wrHNo440WluWGx2yGNbq0vaw88R2xmXibEmx-t_HC2BBhSJpnEP6Vi_lj6n0CIGN2EQl9YqkOoi160-df2UdaHmSrja8aKjhSA-BXIMQE0IGVWObqiF03UCLrVR17SzOHQglpsZq0FLF4ZWr_0Z1nX1DPN5ShaxAOgXGFSTKfO22AUOUCG9612U-afedWCZBf-jkczz-YKirDujORaRRzhZlPd33zx-d32RYpyM0fiH_3gTnTDPI5kiLDygL6zCuRwhxVs68936-r0M4NHk=s0-l75-ft" width="474" height="633">
-In bluetooth communication, there is a master/slave configuration, indicating which device will initiate/control the connection. I set my HC-05 as a slave because I want it to receive connections/signals from my phone which will act as the master. When connecting the bluetooth module, there are 2 modes: AT mode and bluetooth (data) mode. AT mode is used to configure/control the bluetooth module itself and bluetooth mode is just connecting and communicating with other bluetooth devices. In this case, we are using data mode so it can directly exchange data with my phone. The HC-05 also has 6 pins: State, VCC, GND, TXD, RXD, Key. Out of the 6 pins I connected 4 of them: VCC (provides power to the module), GND (ground connection), TXD (transmits data), and RXD (receives data). The TXD pin of one device must be connected to the RXD pin of the other device and vice versa because you cannot have 2 devices receiving/transmitting simultaneously. The servo I use is called a hobby servo which uses PWMs to contorl their position. They have 3 wires: power, ground, and control. The PWM signal that is sent ot the servo's control wire instructs the angle of the servo's output shaft. A PWM signal is a digital signal that represents analog values and it alternates between 2 voltage levels. One of the key things about PWMs is its duty cycle (The ratio of the "on" time to the total period of the signal). For example, if a PWM signal has a period of 10 milliseconds and is "on" for 3 milliseconds, its duty cycle is 30% (3 milliseconds/10 milliseconds). By changing the duty cycle, the average voltage delivered to my servo will vary (Higher duty cycle = higher average and lower duty cycle = low average voltage). So how does adjusting the duty cycle affect my servo? Adjusting the duty cycle affects how much voltage is delivered which in turn controls my servos speed from slow to fast. 
+In bluetooth communication, there is a master/slave configuration, indicating which device will initiate/control the connection. I set my HC-05 as a slave because I want it to receive connections/signals from my phone which will act as the master. When connecting the bluetooth module, there are 2 modes: AT mode and bluetooth (data) mode. AT mode is used to configure/control the bluetooth module itself and bluetooth mode is just connecting and communicating with other bluetooth devices. In this case, we are using data mode so it can directly exchange data with my phone. The HC-05 also has 6 pins: State, VCC, GND, TXD, RXD, Key. Out of the 6 pins I connected 4 of them: VCC (provides power to the module), GND (ground connection), TXD (transmits data), and RXD (receives data). The TXD pin of one device must be connected to the RXD pin of the other device and vice versa because you cannot have 2 devices receiving/transmitting simultaneously. 
+
+### PWM
+The servo I use is called a hobby servo which uses PWMs to contorl their position. They have 3 wires: power, ground, and control. The PWM signal that is sent ot the servo's control wire instructs the angle of the servo's output shaft. A PWM signal is a digital signal that represents analog values and it alternates between 2 voltage levels. One of the key things about PWMs is its duty cycle (The ratio of the "on" time to the total period of the signal). For example, if a PWM signal has a period of 10 milliseconds and is "on" for 3 milliseconds, its duty cycle is 30% (3 milliseconds/10 milliseconds). By changing the duty cycle, the average voltage delivered to my servo will vary (Higher duty cycle = higher average and lower duty cycle = low average voltage). So how does adjusting the duty cycle affect my servo? Adjusting the duty cycle affects how much voltage is delivered which in turn controls my servos speed from slow to fast. 
 
 ### MIT App Inventor
+*Attach image*
 After I attached my HC-05 to my robotic arm, I created an app using the MIT app inventor to be able to control my robotic arm. In my arduino code, I assigned each servo movement to different states. Then on the MIT app inventor I used a block called "Send one byte by number". A byte can represent a number 0-255, by corresponding each byte to a state I can transmit the numerical value stored within that single byte of data. Once my arduino receives that number, it will move the servo accordingly.
 
 ## Challenges
@@ -35,7 +39,7 @@ For my modifications, I am planning to add more joints to my robotic arm using c
 <iframe width="560" height="315" src="https://www.youtube.com/embed/s6oYnf6QK6A?si=ZWjJvlmnjy_reT9l" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Description
-My second milestone was to program the joystick to be able to move my robotic arm. The joysticks send analog values to the arduino nano because each joystick produce a continuous range of voltage levels that represent how far the stick is pushed. Unlike digital values which are HIGH or LOW (1 or 0), analog values are much more precise which makes the movement of the robotic arm much more smoother. In my code, I use specific functions from the code library to translate these analog readings into servo movements. For example, the arm.up(speed) and arm.down(speed) move the arm up and down. arm.left(speed) and arm.right(speed) rotate the base and arm.open(speed) arm.close(speed) open and closes the claw of the robotic arm. Once the arduino knows what to perform, it generates a PWM signal for each servo. PWM works by rapidly sending on and off electrical signals. The length of the on time within each cycle determines the position of the servo.
+My second milestone was to program the joystick to be able to move my robotic arm. The joysticks send analog values to the arduino nano because each joystick produce a continuous range of voltage levels that represent how far the stick is pushed. Unlike digital values which are HIGH or LOW (1 or 0), analog values are much more precise which makes the movement of the robotic arm much more smoother. In my code, I use specific functions from the code library to translate these analog readings into servo movements. For example, the arm.up(speed) and arm.down(speed) move the arm up and down. arm.left(speed) and arm.right(speed) rotate the base and arm.open(speed) arm.close(speed) open and closes the claw of the robotic arm. 
 
 ## Challenges
 One of the challenges I faced during this milestone was the servo that was connected to the claw started moving eratically. I assumed it was a problem within the code but after thorougly checking it, I found nothing wrong. Another problem I considered was the servo was not receiving enough energy to power it. Eventually I realized that there was a problem with the servo itself.   
@@ -211,16 +215,16 @@ void loop() {
 }
 
 ## Code (Milestone 2)
-#include "src/CokoinoArm.h"
+#include "CokoinoArm.h"
+#include <SoftwareSerial.h>
 #define buzzerPin 9
-
+int state=0;
 CokoinoArm arm;
 int xL,yL,xR,yR;
-
-const int act_max=170;    //Default 10 action,4 the Angle of servo
+SoftwareSerial BTSerial(3,2);
+const int act_max=10;    //Default 10 action,4 the Angle of servo
 int act[act_max][4];    //Only can change the number of action
 int num=0,num_do=0;
-///////////////////////////////////////////////////////////////
 void turnUD(void){
   if(xL!=512){
     if(0<=xL && xL<=100){arm.up(10);return;}
@@ -235,7 +239,6 @@ void turnUD(void){
     if(540<xL && xL<=600){arm.down(35);return;} 
     }
 }
-///////////////////////////////////////////////////////////////
 void turnLR(void){
   if(yL!=512){
     if(0<=yL && yL<=100){arm.right(0);return;}
@@ -250,9 +253,8 @@ void turnLR(void){
     if(540<yL && yL<=600){arm.left(20);return;}
   }
 }
-///////////////////////////////////////////////////////////////
 void turnCO(void){
-  if(xR!=512){
+  if(arm.servo4.read()>7){
     if(0<=xR && xR<=100){arm.close(0);return;}
     if(900<xR && xR<=1024){arm.open(0);return;} 
     if(100<xR && xR<=200){arm.close(5);return;}
@@ -264,15 +266,16 @@ void turnCO(void){
     if(400<xR && xR<=480){arm.close(20);return;}
     if(540<xR && xR<=600){arm.open(20);return;} 
     }
+  else{arm.servo4.write(8);
+
+  }  
 }
-///////////////////////////////////////////////////////////////
 void date_processing(int *x,int *y){
   if(abs(512-*x)>abs(512-*y))
     {*y = 512;}
   else
     {*x = 512;}
 }
-///////////////////////////////////////////////////////////////
 void buzzer(int H,int L){
   while(yR<420){
     digitalWrite(buzzerPin,HIGH);
@@ -289,7 +292,6 @@ void buzzer(int H,int L){
     yR = arm.JoyStickR.read_y();
     }
 }
-///////////////////////////////////////////////////////////////
 void C_action(void){
   if(yR>800){
     int *p;
@@ -308,7 +310,6 @@ void C_action(void){
     //Serial.println(act[0][0]);
   }
 }
-///////////////////////////////////////////////////////////////
 void Do_action(void){
   if(yR<220){
     buzzer(200,300);
@@ -325,17 +326,52 @@ void Do_action(void){
     }
   }
 }
-///////////////////////////////////////////////////////////////
 void setup() {
-  //Serial.begin(9600);
+  Serial.begin(9600);
+  BTSerial.begin(9600);
   //arm of servo motor connection pins
-  arm.ServoAttach(4,5,6,7);
+  arm.ServoAttach(5,11,7,10);
   //arm of joy stick connection pins : xL,yL,xR,yR
   arm.JoyStickAttach(A0,A1,A2,A3);
   pinMode(buzzerPin,OUTPUT);
+  arm.servo1.write(90);
+  arm.servo2.write(90);
+  arm.servo3.write(90);
+  arm.servo4.write(90);
 }
-///////////////////////////////////////////////////////////////
+
 void loop() {
+  if(BTSerial.available()>0){
+    state=BTSerial.read();
+  }
+  if(state==1){
+    arm.down(20);//moves arm up just says down
+  }
+  if(state==3){
+    arm.up(20);//moves arm down just says up
+  }
+  if(state==5){
+    arm.left(20);
+  }
+  if(state==7){
+    arm.right(20);
+  }
+  if(state==9){
+    arm.open(20);
+  }
+  if(state==11){
+    arm.close(20);
+  }
+  if(state==13){
+    arm.servo1.write(90);
+    arm.servo2.write(90);
+    arm.servo3.write(90);
+    arm.servo4.write(90);
+  }
+  if(arm.servo4.read()<7){
+    arm.servo4.write(8);
+  }
+  Serial.println(state);
   xL = arm.JoyStickL.read_x();
   yL = arm.JoyStickL.read_y();
   xR = arm.JoyStickR.read_x();
