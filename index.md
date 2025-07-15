@@ -27,7 +27,8 @@ In bluetooth communication, there is a master/slave configuration, indicating wh
 The servo I use is called a hobby servo which uses PWMs to contorl their position. They have 3 wires: power, ground, and control. The PWM signal that is sent ot the servo's control wire instructs the angle of the servo's output shaft. A PWM signal is a digital signal that represents analog values and it alternates between 2 voltage levels. One of the key things about PWMs is its duty cycle (The ratio of the "on" time to the total period of the signal). For example, if a PWM signal has a period of 10 milliseconds and is "on" for 3 milliseconds, its duty cycle is 30% (3 milliseconds/10 milliseconds). By changing the duty cycle, the average voltage delivered to my servo will vary (Higher duty cycle = higher average and lower duty cycle = low average voltage). So how does adjusting the duty cycle affect my servo? Adjusting the duty cycle affects how much voltage is delivered which in turn controls my servos speed from slow to fast. 
 
 ### MIT App Inventor
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://myoctocat.com/assets/images/base-octocat.svg)
+<img width="887" height="462" alt="Screenshot 2025-07-15 110617" src="https://github.com/user-attachments/assets/7a207af4-49aa-49b3-9171-9f933fd79668" />
+
 After attaching the HC-05 to my robotic arm, I created an app using the MIT app inventor to be able to control the robotic arm. On the app there is a button that allows me to connect to the bluetooth module, a button that resets all the servos to 90°, and six buttons that move the joints of the robotic arm (base, joints, and claw). When a button is pressed on my block code, a number is outputted. The movement of the servo depends on the number that was outputted so when my arduino receives that number, it'll change the movement of the servo.
 
 ## Challenges
