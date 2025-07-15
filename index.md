@@ -215,8 +215,8 @@ void loop() {
   Serial.println(state);
 }
 ```
-```
 ## Code (Milestone 2)
+```
 #include "CokoinoArm.h"
 #include <SoftwareSerial.h>
 #define buzzerPin 9
