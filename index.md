@@ -19,7 +19,7 @@ With the help of servos at each joint, the robotic arm is extremely flexible. Yo
 For my third milestone I connected my robotic arm to my phone via an HC-05 bluetooth module.
 
 ### HC-05
-<img src="https://mail.google.com/mail/u/0?ui=2&ik=c202488bb0&attid=0.1&permmsgid=msg-a:r-4576871970921824089&th=1980eff2f509ddb2&view=fimg&fur=ip&permmsgid=msg-a:r-4576871970921824089&sz=s0-l75-ft&attbid=ANGjdJ-lhEP7qK5_58W1EP3mLCXhjqNix4BQDYkAtkEfSleCTJMe7DQDBNBEGUWlsRXv1SdmzEbab4e9MugGy8t9srjex2ggNU_hkyXd0eVVpZbTRoDciyuLR83onzo&disp=emb&realattid=ii_1980eff1cd9d2b369f21&zw" alt="Description of the image">
+<img src="C:\Users\skyle\Downloads\DSD Tech.jpg" alt=" ">
 
 In bluetooth communication, there is a master/slave configuration, indicating which device will initiate/control the connection. I set my HC-05 as a slave because I want it to receive connections/signals from my phone which will act as the master. When connecting the bluetooth module, there are 2 modes: AT mode and bluetooth (data) mode. AT mode is used to configure/control the bluetooth module itself and bluetooth mode is just connecting and communicating with other bluetooth devices. In this case, we are using data mode so it can directly exchange data with my phone. The HC-05 also has 6 pins: State, VCC, GND, TXD, RXD, Key. Out of the 6 pins I connected 4 of them: VCC (provides power to the module), GND (ground connection), TXD (transmits data), and RXD (receives data). The TXD pin of one device must be connected to the RXD pin of the other device and vice versa because you cannot have 2 devices receiving/transmitting simultaneously. 
 
