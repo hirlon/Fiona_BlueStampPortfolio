@@ -220,7 +220,7 @@ int xL,yL,xR,yR;
 const int act_max=170;    //Default 10 action,4 the Angle of servo
 int act[act_max][4];    //Only can change the number of action
 int num=0,num_do=0;
-
+///////////////////////////////////////////////////////////////
 void turnUD(void){
   if(xL!=512){
     if(0<=xL && xL<=100){arm.up(10);return;}
@@ -235,7 +235,7 @@ void turnUD(void){
     if(540<xL && xL<=600){arm.down(35);return;} 
     }
 }
-
+///////////////////////////////////////////////////////////////
 void turnLR(void){
   if(yL!=512){
     if(0<=yL && yL<=100){arm.right(0);return;}
@@ -250,7 +250,7 @@ void turnLR(void){
     if(540<yL && yL<=600){arm.left(20);return;}
   }
 }
-
+///////////////////////////////////////////////////////////////
 void turnCO(void){
   if(xR!=512){
     if(0<=xR && xR<=100){arm.close(0);return;}
@@ -265,14 +265,14 @@ void turnCO(void){
     if(540<xR && xR<=600){arm.open(20);return;} 
     }
 }
-
+///////////////////////////////////////////////////////////////
 void date_processing(int *x,int *y){
   if(abs(512-*x)>abs(512-*y))
     {*y = 512;}
   else
     {*x = 512;}
 }
-
+///////////////////////////////////////////////////////////////
 void buzzer(int H,int L){
   while(yR<420){
     digitalWrite(buzzerPin,HIGH);
@@ -289,7 +289,7 @@ void buzzer(int H,int L){
     yR = arm.JoyStickR.read_y();
     }
 }
-
+///////////////////////////////////////////////////////////////
 void C_action(void){
   if(yR>800){
     int *p;
@@ -308,7 +308,7 @@ void C_action(void){
     //Serial.println(act[0][0]);
   }
 }
-
+///////////////////////////////////////////////////////////////
 void Do_action(void){
   if(yR<220){
     buzzer(200,300);
@@ -325,7 +325,7 @@ void Do_action(void){
     }
   }
 }
-
+///////////////////////////////////////////////////////////////
 void setup() {
   //Serial.begin(9600);
   //arm of servo motor connection pins
@@ -334,7 +334,7 @@ void setup() {
   arm.JoyStickAttach(A0,A1,A2,A3);
   pinMode(buzzerPin,OUTPUT);
 }
-
+///////////////////////////////////////////////////////////////
 void loop() {
   xL = arm.JoyStickL.read_x();
   yL = arm.JoyStickL.read_y();
