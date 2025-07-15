@@ -6,7 +6,7 @@ With the help of servos at each joint, the robotic arm is extremely flexible. Yo
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
-| Fiona L | The Nightingale-Bamford School | Robotics | Incoming Junior |
+| Fiona L | The Nightingale-Bamford School | Robotics/AI | Incoming Junior |
 
 
 ![Headstone Image](logo.svg)
