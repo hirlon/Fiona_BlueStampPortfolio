@@ -13,16 +13,18 @@ With the help of servos at each joint, the robotic arm is extremely flexible. Yo
 
 # Third Milestone
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/s6oYnf6QK6A?si=ZWjJvlmnjy_reT9l" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oH3SdCt35vY?si=WwMIM5t4r-W3lIPx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Description
-
+For my third milestone I connected my robotic arm to my phone via an HC-05 bluetooth module. In bluetooth communication, there is a master/slave configuration, indicating which device will initiate/control the connection. I set my HC-05 as a slave because I want it to receive connections/signals from my phone which will act as the master. When connecting the bluetooth module, there are 2 modes: AT mode and bluetooth (data) mode. AT mode is used to configure/control the bluetooth module itself and bluetooth mode is just connecting and communicating with other bluetooth devices. In this case, we are using data mode so it can directly exchange data with my phone. The HC-05 also has 6 pins: State, VCC, GND, TXD, RXD, Key. Out of the 6 pins I connected 4 of them: VCC (provides power to the module), GND (ground connection), TXD (transmits data), and RXD (receives data). The TXD pin of one device must be connected to the RXD pin of the other device and vice versa because you cannot have 2 devices receiving/transmitting simultaneously. The servo I use is called a hobby servo which uses PWMs to contorl their position. They have 3 wires: power, ground, and control. The PWM signal that is sent ot the servo's control wire instructs the angle of the servo's output shaft. A PWM signal is a digital signal that represents analog values and it alternates between 2 voltage levels. One of the key things about PWMs is its duty cycle (The ratio of the "on" time to the total period of the signal). For example, if a PWM signal has a period of 10 milliseconds and is "on" for 3 milliseconds, its duty cycle is 30% (3 milliseconds/10 milliseconds). By changing the duty cycle, the average voltage delivered to my servo will vary (Higher duty cycle = higher average and lower duty cycle = low average voltage). So how does adjusting the duty cycle affect my servo? Adjusting the duty cycle affects how much voltage is delivered which in turn controls my servos speed from slow to fast. After I attached my HC-05 to my robotic arm, I created an app using the MIT app inventor to be able to control my robotic arm. In my arduino code, I assigned each servo movement to different states. Then on the MIT app inventor I used a block called "Send one byte by number". A byte can represent a number 0-255, by corresponding each byte to a state I can transmit the numerical value stored within that single byte of data. Once my arduino receives that number, it will move the servo accordingly.
 
 ## Challenges
 
+One of the challenges I faced during my third milestone was my robotic arm moving by itself. Although I unplugged the pins from the joysticks, the servos were still receiving unwanted signals which conflicts with the signals I was originally trying to send. I fixed this by commenting out/deleting any code correlated to the joystick. Another challenge I had was my claw suddently not working, turns out the wires on the servo broke off so I just had to replace it.
 
 ## Next Steps
 
+For my modifications, I am planning to add more joints to my robotic arm using cadded parts.
 
 ## Code
 #include "src/CokoinoArm.h"
