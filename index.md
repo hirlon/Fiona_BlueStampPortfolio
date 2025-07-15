@@ -78,6 +78,7 @@ For my next milestone, I will be moving on to my intensive project.
 Figure 1: A visual of the remote control and servos wiring (Taken from COKOINO).
 
 ## Code (Milestone 3)
+```
 #include "src/CokoinoArm.h"
 #include <SoftwareSerial.h>
 #define buzzerPin 9
@@ -213,7 +214,8 @@ void loop() {
   }
   Serial.println(state);
 }
-
+```
+```
 ## Code (Milestone 2)
 #include "CokoinoArm.h"
 #include <SoftwareSerial.h>
@@ -384,7 +386,7 @@ void loop() {
   C_action();
   Do_action();
 }
-
+```
 # Bill of Materials
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
