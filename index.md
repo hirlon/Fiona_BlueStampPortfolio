@@ -41,7 +41,8 @@ For my modifications, I am planning to add more joints to my robotic arm using c
 <iframe width="560" height="315" src="https://www.youtube.com/embed/s6oYnf6QK6A?si=ZWjJvlmnjy_reT9l" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Description
-My second milestone was to program the joystick to be able to move my robotic arm. The joysticks send analog values to the arduino nano because each joystick produce a continuous range of voltage levels that represent how far the stick is pushed. Unlike digital values which are HIGH or LOW (1 or 0), analog values are much more precise which makes the movement of the robotic arm much more smoother. In my code, I use specific functions from the code library to translate these analog readings into servo movements. For example, the arm.up(speed) and arm.down(speed) move the arm up and down. arm.left(speed) and arm.right(speed) rotate the base and arm.open(speed) arm.close(speed) open and closes the claw of the robotic arm. 
+My second milestone was to program the joystick to be able to move my robotic arm. The joysticks send analog values to the arduino nano because each joystick produce a continuous range of voltage levels that represent how far the stick is pushed. Unlike digital values which are HIGH or LOW (1 or 0), analog values are much more precise which makes the movement of the robotic arm much more smoother. In my code, I use specific functions from the code library to translate these analog readings into servo movements. For example, the arm.up(speed) and arm.down(speed) move the arm up and down. arm.left(speed) and arm.right(speed) rotate the base and arm.open(speed) arm.close(speed) open and closes the claw of the robotic arm. The code checks the values of my joystick and based on that range, it will instuct the arm to move how many units and in which direction. There is also a function on my arm where it can repeat captured actions by first declaring a pointer to an integer. Then it captures the action and assigns it to the pointer. 
+
 
 ## Challenges
 One of the challenges I faced during this milestone was the servo that was connected to the claw started moving eratically. I assumed it was a problem within the code but after thorougly checking it, I found nothing wrong. Another problem I considered was the servo was not receiving enough energy to power it. Eventually I realized that there was a problem with the servo itself.   
@@ -230,7 +231,7 @@ const int act_max=10;    //Default 10 action,4 the Angle of servo
 int act[act_max][4];    //Only can change the number of action
 int num=0,num_do=0;
 void turnUD(void){
-  if(xL!=512){
+  if(xL!=512){    // This code checks the value of xL, and based on the range, will instruct the robotic arm to move up/down x units.
     if(0<=xL && xL<=100){arm.up(10);return;}
     if(900<xL && xL<=1024){arm.down(10);return;} 
     if(100<xL && xL<=200){arm.up(20);return;}
@@ -243,8 +244,8 @@ void turnUD(void){
     if(540<xL && xL<=600){arm.down(35);return;} 
     }
 }
-void turnLR(void){
-  if(yL!=512){
+void turnLR(void){    
+  if(yL!=512){    // This code checks the value of yL, and based on the range, will instruct the robotic arm to move left/right x units.
     if(0<=yL && yL<=100){arm.right(0);return;}
     if(900<yL && yL<=1024){arm.left(0);return;}  
     if(100<yL && yL<=200){arm.right(5);return;}
@@ -258,7 +259,7 @@ void turnLR(void){
   }
 }
 void turnCO(void){
-  if(arm.servo4.read()>7){
+  if(arm.servo4.read()>7){    // This function checks the position of servo 4. If the reading is greater than 7, the conditionals will execute and the claw will open/close x units based on the value given. If the conditional is false (the reading is less than 7) it will set servo 4 to position 8.
     if(0<=xR && xR<=100){arm.close(0);return;}
     if(900<xR && xR<=1024){arm.open(0);return;} 
     if(100<xR && xR<=200){arm.close(5);return;}
@@ -274,21 +275,23 @@ void turnCO(void){
 
   }  
 }
-void date_processing(int *x,int *y){
-  if(abs(512-*x)>abs(512-*y))
+void date_processing(int *x,int *y){    // This function sets one of these values to 512 by comparing which of the 2 values are closer. 
+  if(abs(512-*x)>abs(512-*y))    // The abs function computes the absolute value of the difference between 512 and the values of x and y
     {*y = 512;}
   else
     {*x = 512;}
 }
-void buzzer(int H,int L){
-  while(yR<420){
-    digitalWrite(buzzerPin,HIGH);
-    delayMicroseconds(H);
-    digitalWrite(buzzerPin,LOW);
-    delayMicroseconds(L);
-    yR = arm.JoyStickR.read_y();
+
+void buzzer(int H,int L){	  // Defines a function named buzzer
+  while(yR<420){	  // This loop will continue executing as long as the value of yR is less than 420
+    digitalWrite(buzzerPin,HIGH);	  // Sets the buzzerpin to high, which activates it.
+    delayMicroseconds(H);  	// This determines the duration of the buzzer.
+    digitalWrite(buzzerPin,LOW);	  // Sets the buzzerpin to low, turning it off.
+    delayMicroseconds(L);  	// This determines the duration that the buzzer is silent.
+    yR = arm.JoyStickR.read_y();    // Updates the value of yR by reading the position of the joystick.
     }
-  while(yR>600){
+
+  while(yR>600){  // Read above
     digitalWrite(buzzerPin,HIGH);
     delayMicroseconds(H);
     digitalWrite(buzzerPin,LOW);
@@ -296,20 +299,22 @@ void buzzer(int H,int L){
     yR = arm.JoyStickR.read_y();
     }
 }
+
 void C_action(void){
-  if(yR>800){
-    int *p;
-    p=arm.captureAction();
-    for(char i=0;i<4;i++){
-    act[num][i]=*p;
-    p=p+1;     
+  if(yR>800){		//Checks if the variable yR is greeting than 800
+    int *p;		//Declares a pointer to an integer
+    p=arm.captureAction();		//Captures action and assigns to pointer
+    for(char i=0;i<4;i++){		//A loop repeats 4 times to capture actions and store them.
+    act[num][i]=*p;		//Stores the value pointed by p
+    p=p+1;		//Moves the pointer to the next integer 
     }
-    num++;
-    num_do=num;
-    if(num>=act_max){
+    num++;		//Increments the action count
+    num_do=num;		//Updates the amount of actions done
+    if(num>=act_max){		//If actions exceed the max amount → Resets to zero and buzzer will sound at 600Hz for 400 milliseconds
       num=0;
       buzzer(600,400);
       }
+
     while(yR>600){yR = arm.JoyStickR.read_y();}
     //Serial.println(act[0][0]);
   }
@@ -331,13 +336,14 @@ void Do_action(void){
   }
 }
 void setup() {
-  Serial.begin(9600);
-  BTSerial.begin(9600);
-  //arm of servo motor connection pins
+  Serial.begin(9600);  //Initializes serial connection
+  BTSerial.begin(9600);    // Initializes bluetooth communication
+  // arm of servo motor connection pins
   arm.ServoAttach(5,11,7,10);
-  //arm of joy stick connection pins : xL,yL,xR,yR
+  // arm of joy stick connection pins : xL,yL,xR,yR
   arm.JoyStickAttach(A0,A1,A2,A3);
-  pinMode(buzzerPin,OUTPUT);
+  pinMode(buzzerPin,OUTPUT);  // Sets buzzer as an output
+  // Sets all servo at 90 degrees
   arm.servo1.write(90);
   arm.servo2.write(90);
   arm.servo3.write(90);
@@ -345,8 +351,8 @@ void setup() {
 }
 
 void loop() {
-  if(BTSerial.available()>0){
-    state=BTSerial.read();
+  if(BTSerial.available()>0){    // Allows devices to communicate wirelessly
+    state=BTSerial.read();    // This variable is used to determine which command had been received and what action the arm should perform.
   }
   if(state==1){
     arm.down(20);//moves arm up just says down
@@ -375,6 +381,7 @@ void loop() {
   if(arm.servo4.read()<7){
     arm.servo4.write(8);
   }
+
   Serial.println(state);
   xL = arm.JoyStickL.read_x();
   yL = arm.JoyStickL.read_y();
