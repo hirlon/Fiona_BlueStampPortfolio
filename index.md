@@ -59,6 +59,8 @@ My first milestone was the assembly of the robotic arm and the joycon but before
 ## Challenges
 Throughout my project I ran in to a major problem. I used a different power source than the default one so I couldnt attach the battery holder on to the board I was provided with. So I ended up using velcro.
 
+*Insert photo of velcro*
+
 ## Next Steps
 Next I plan to compile and upload the code to be able to control the robotic arm.
 
