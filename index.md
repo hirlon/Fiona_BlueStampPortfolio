@@ -21,8 +21,8 @@ For my modifications, I added an extra joint on to the arm by using CAD. (Will a
 
 Figure 1: Part used for servo extension (https://a360.co/4lDcxHp and https://a360.co/4nVhRqY)
 
-<img width="814" height="529" alt="image" src="https://github.com/user-attachments/assets/71da1fec-1668-4747-9da3-7f00959259dc" />
-<img width="789" height="557" alt="image" src="https://github.com/user-attachments/assets/0a24160b-2795-4b2f-8afe-6e515940332e" />
+<img width="500" height="324.94" alt="image" src="https://github.com/user-attachments/assets/71da1fec-1668-4747-9da3-7f00959259dc" />
+<img width="500" height="354.06" alt="image" src="https://github.com/user-attachments/assets/0a24160b-2795-4b2f-8afe-6e515940332e" />
 
 Figure 2: Dimensions for both parts
 
