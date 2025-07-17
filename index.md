@@ -24,6 +24,8 @@ Figure 1: Part used for servo extension (https://a360.co/4lDcxHp and https://a36
 <img width="300" height="150" alt="Screenshot 2025-07-17 132943" src="https://github.com/user-attachments/assets/452691c0-abed-49ee-b570-04f5b475b8fa" />
 <img width="300" height="121.53" alt="Screenshot 2025-07-17 133005" src="https://github.com/user-attachments/assets/46cf307d-d62b-4305-9cf0-a0b8b25116b2" />
 
+<img src="file:///C:/Users/skyle/Downloads/Servo+extension+1+Drawing.pdf" />
+
 Figure 2: Dimensions for both parts
 
 
