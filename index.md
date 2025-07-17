@@ -59,7 +59,7 @@ My first milestone was the assembly of the robotic arm and the joycon but before
 ## Challenges
 Throughout my project I ran in to a major problem. I used a different power source than the default one so I couldnt attach the battery holder on to the board I was provided with. So I ended up using velcro.
 
-*Insert photo of velcro*
+<img style="display: block;-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="https://ci3.googleusercontent.com/mail-img-att/AGAZnRpBUHSvBffX0kJ1qgMHZhSpti-Vi2NBf5dC3FiGeAu6MZjm0QzPp52ZnnXFAju0KLfY_6nB6RHxqe7oESCFyGM1LhKII0F6eSceib4Sx5TEYRo0fWRG2ItFQu1yUH4Ms-PBmyFhq2ISAzKF4ItouvsHNZJ47QD4pQyfQRJ2oJJ-X-E10nrfoNGNpFojmWz11pdvFAF5TaUSkNL2ymY3dgBo9b3_VSC6d6pLl2iR2hzByOwuIPgYUGERD6LvHeJeWA1Je3RiVsmjEz1Cpn78yzzkMwLgp1KkegK_wxYLoNqo4pNbhDJOrRrNuGw8lMSSFxvddkxfq9qbmUa7LzUmrEVj0wmCrXAicwganPQjruLd96G4PnbxQUVqBpRLT3BQqmEB5Qsm8f-9eMbyAJ9TSaLz56YCaK5mcyJ-Vo0upNjdyu_IP3LoiYXHky0soeeiG2wbaeWUv_-3Z_tlzAcPlLAf7jFDZxzKdAG6fKxCH9zOXbBr0Ma9A7B9yg268n0gpJ6s2AJr-YsGsb2f78f3zVoXMTNOHUJLclHiSPAXj5UhMc-AU-SC3yi7U9Zr9t4GnFme13q2oGDUP0_9RZjZMmCCnKhhRXPuBTJPZfnwa5MN7xoX3nClICyvLe3_uTWRsE26ZTcRAimQAhaBccodHDcKRxHL33dGf3gXfrB1o5HpJ__2SMwVgq-84d15stPDdb3Xrm59zw9y0CYoIokHjgJj8_JeOI4T27t715LDyHtKyU2v5qHkHLwgJCqQ6-BWFGHpoTTWKbAQXcZq5cFCroNpdN0fF-D2HLUHMLVS6f1IsPxA0aNUlUz-t5P0nU0W0ThiT5bNzWtDkaGztMlz-HpBwKmpIa-nbZd-imHbvUieJWUv_V9PdJEiug8L5cfIP62m7ZHG0K8xES312PrHaywJ54_SqemvtX4I7-VfgJK0c3vEsah1tA0NIddOjC3wOQ1yKZUrqtd_h1zkP-S0JTtZDo443Ktaff9zBKqiUNvY1RrX7FD_tdgtB_2UDFt3_0uB301VNA1ZDibZjPkW1EnDJzyg=s0-l75-ft" width="474" height="633">
 
 ## Next Steps
 Next I plan to compile and upload the code to be able to control the robotic arm.
