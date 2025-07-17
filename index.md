@@ -59,9 +59,8 @@ For my modifications, I am planning to add more joints to my robotic arm using c
 ## Description
 My second milestone was to program the joystick to be able to move my robotic arm. The joysticks send analog values to the arduino nano because each joystick produce a continuous range of voltage levels that represent how far the stick is pushed. Unlike digital values which are HIGH or LOW (1 or 0), analog values are much more precise which makes the movement of the robotic arm much more smoother. In my code, I use specific functions from the code library to translate these analog readings into servo movements. For example, the arm.up(speed) and arm.down(speed) move the arm up and down. arm.left(speed) and arm.right(speed) rotate the base and arm.open(speed) arm.close(speed) open and closes the claw of the robotic arm. The code checks the values of my joystick and based on that range, it will instuct the arm to move how many units and in which direction. There is also a function on my arm where it can repeat captured actions by first declaring a pointer to an integer. Then it captures the action and assigns it to the pointer. 
 
-
 ## Challenges
-One of the challenges I faced during this milestone was the servo that was connected to the claw started moving eratically. I assumed it was a problem within the code but after thorougly checking it, I found nothing wrong. Another problem I considered was the servo was not receiving enough energy to power it. Eventually I realized that there was a problem with the servo itself.   
+One of the challenges I faced during this milestone was the servo that was connected to the claw started moving eratically. I assumed it was a problem within the code but after thorougly checking it, I found nothing wrong. Another problem I considered was the servo was not receiving enough energy to power it. Eventually I realized that there was a problem with the servo itself so I had it replaced.   
 
 ## Next Steps
 For my last milestone, I will be connecting the robotic arm to an HC-05 via bluetooth so it'd be able to be controlled by a phone using the MIT inventor app.
