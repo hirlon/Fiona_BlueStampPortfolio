@@ -1,4 +1,4 @@
-# Robotic Arm
+# 4-axis Robotic Arm
 With the help of servos at each joint, the robotic arm is extremely flexible. You can control the arm via a smartphone or a 2 joystick controller.
 
 ```HTML
@@ -10,6 +10,20 @@ With the help of servos at each joint, the robotic arm is extremely flexible. Yo
 
 
 ![Headstone Image](logo.svg)
+
+# Modifications
+
+## Descriptions
+For my modifications, I added an extra joint on to the arm by using CAD. 
+
+## CAD
+<img width="197" height="301" alt="Screenshot 2025-07-17 131847" src="https://github.com/user-attachments/assets/9cdbcfd8-2198-4f01-b886-3e7c5629d10f" />
+Figure 1: Part used for servo extension (https://a360.co/4lDcxHp)
+
+<img width="300" height="150" alt="Screenshot 2025-07-17 132943" src="https://github.com/user-attachments/assets/452691c0-abed-49ee-b570-04f5b475b8fa" />
+<img width="300" height="121.53" alt="Screenshot 2025-07-17 133005" src="https://github.com/user-attachments/assets/46cf307d-d62b-4305-9cf0-a0b8b25116b2" />
+Figure 2: Dimensions for both parts
+
 
 # Third Milestone
 
