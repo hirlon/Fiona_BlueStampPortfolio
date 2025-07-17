@@ -14,7 +14,7 @@ With the help of servos at each joint, the robotic arm is extremely flexible. Yo
 # Modifications
 
 ## Descriptions
-For my modifications, I added an extra joint on to the arm by using CAD. 
+For my modifications, I added an extra joint on to the arm by using CAD. (Will add more after modifications are finished)
 
 ## CAD
 <img width="197" height="301" alt="Screenshot 2025-07-17 131847" src="https://github.com/user-attachments/assets/9cdbcfd8-2198-4f01-b886-3e7c5629d10f" />
@@ -190,7 +190,6 @@ void C_action(void){
   }
 }
 
-
 void setup() {
   Serial.begin(9600);
   BTSerial.begin(9600);
@@ -202,9 +201,24 @@ void setup() {
   arm.servo4.write(90);
 }
 
+void setup() {
+  Serial.begin(9600);  //Initializes serial connection
+  BTSerial.begin(9600);    // Initializes bluetooth communication
+  // arm of servo motor connection pins
+  arm.ServoAttach(4,5,6,7);
+  // arm of joy stick connection pins : xL,yL,xR,yR
+  arm.JoyStickAttach(A0,A1,A2,A3);
+  pinMode(buzzerPin,OUTPUT);  // Sets buzzer as an output
+  // Sets all servo at 90 degrees
+  arm.servo1.write(90);
+  arm.servo2.write(90);
+  arm.servo3.write(90);
+  arm.servo4.write(90);
+}
+
 void loop() {
-  if(BTSerial.available()>0){
-    state=BTSerial.read();
+  if(BTSerial.available()>0){    // Allows devices to communicate wirelessly
+    state=BTSerial.read();    // This variable is used to determine which command had been received and what action the arm should perform.
   }
   if(state==1){
     arm.down(20);
@@ -355,50 +369,12 @@ void Do_action(void){
 }
 void setup() {
   Serial.begin(9600);  //Initializes serial connection
-  BTSerial.begin(9600);    // Initializes bluetooth communication
   // arm of servo motor connection pins
-  arm.ServoAttach(5,11,7,10);
+  arm.ServoAttach(4,5,6,7);
   // arm of joy stick connection pins : xL,yL,xR,yR
   arm.JoyStickAttach(A0,A1,A2,A3);
   pinMode(buzzerPin,OUTPUT);  // Sets buzzer as an output
-  // Sets all servo at 90 degrees
-  arm.servo1.write(90);
-  arm.servo2.write(90);
-  arm.servo3.write(90);
-  arm.servo4.write(90);
 }
-
-void loop() {
-  if(BTSerial.available()>0){    // Allows devices to communicate wirelessly
-    state=BTSerial.read();    // This variable is used to determine which command had been received and what action the arm should perform.
-  }
-  if(state==1){
-    arm.down(20);//moves arm up just says down
-  }
-  if(state==3){
-    arm.up(20);//moves arm down just says up
-  }
-  if(state==5){
-    arm.left(20);
-  }
-  if(state==7){
-    arm.right(20);
-  }
-  if(state==9){
-    arm.open(20);
-  }
-  if(state==11){
-    arm.close(20);
-  }
-  if(state==13){
-    arm.servo1.write(90);
-    arm.servo2.write(90);
-    arm.servo3.write(90);
-    arm.servo4.write(90);
-  }
-  if(arm.servo4.read()<7){
-    arm.servo4.write(8);
-  }
 
   Serial.println(state);
   xL = arm.JoyStickL.read_x();
