@@ -204,7 +204,7 @@ void setup() {
   Serial.begin(9600);  //Initializes serial connection
   BTSerial.begin(9600);    // Initializes bluetooth communication
   // arm of servo motor connection pins
-  arm.ServoAttach(4,5,6,7);
+  arm.ServoAttach(4,5,6,7,10);
   // arm of joy stick connection pins : xL,yL,xR,yR
   arm.JoyStickAttach(A0,A1,A2,A3);
   pinMode(buzzerPin,OUTPUT);  // Sets buzzer as an output
@@ -213,6 +213,7 @@ void setup() {
   arm.servo2.write(90);
   arm.servo3.write(90);
   arm.servo4.write(90);
+  arm.servo5.write(90);
 }
 
 void loop() {
@@ -242,6 +243,7 @@ void loop() {
     arm.servo2.write(90);
     arm.servo3.write(90);
     arm.servo4.write(90);
+    arm.servo5.write(90);
   }
   if(arm.servo4.read()<7){
     arm.servo4.write(8);
