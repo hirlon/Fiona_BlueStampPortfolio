@@ -190,17 +190,6 @@ void C_action(void){
 }
 
 void setup() {
-  Serial.begin(9600);
-  BTSerial.begin(9600);
-  //arm of servo motor connection pins
-  arm.ServoAttach(4,5,6,7);
-  arm.servo1.write(90);
-  arm.servo2.write(90);
-  arm.servo3.write(90);
-  arm.servo4.write(90);
-}
-
-void setup() {
   Serial.begin(9600);  //Initializes serial connection
   BTSerial.begin(9600);    // Initializes bluetooth communication
   // arm of servo motor connection pins
