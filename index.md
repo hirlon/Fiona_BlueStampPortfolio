@@ -1,5 +1,5 @@
 # 4-axis Robotic Arm
-With the help of servos at each joint, the robotic arm is extremely flexible. You can control the arm via a smartphone or a 2 joystick controller.
+With the help of servos at each joint, the robotic arm is extremely flexible. You can control the arm via a smartphone.
 
 ```HTML
 ```
