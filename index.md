@@ -12,6 +12,8 @@ With the help of servos at each joint, the robotic arm is extremely flexible. Yo
 ![Headstone Image](logo.svg)
 
 # Modifications
+<img width="500" height="269.4" alt="image" src="https://github.com/user-attachments/assets/8f922a8a-4114-4bf7-ae3d-02fa3bc7f0e1" />
+
 
 ## Descriptions
 For my modifications, I added an extra joint on to the arm by using CAD (See attached drawings below).  On top of adding a 3d printed part, there's also an additional servo. The new servo is responsible for moving the robotic arm up/down along with servos 2 and 3. The robotic arm moves via classes (up, down, left, right, open, and close). 
