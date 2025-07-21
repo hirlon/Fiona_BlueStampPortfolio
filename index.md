@@ -14,9 +14,12 @@ With the help of servos at each joint, the robotic arm is extremely flexible. Yo
 # Modifications
 <img width="500" height="269.4" alt="image" src="https://github.com/user-attachments/assets/8f922a8a-4114-4bf7-ae3d-02fa3bc7f0e1" />
 
-
 ## Descriptions
 For my modifications, I added an extra joint on to the arm by using CAD (See attached drawings below).  On top of adding a 3d printed part, there's also an additional servo. The new servo is responsible for moving the robotic arm up/down along with servos 2 and 3. The robotic arm moves via classes (up, down, left, right, open, and close). 
+- Expand on what changed in the code library (src)
+- Had to change the speed of which servos 2,3,5 moved because it going too fast.
+- Drilled holes in the middle of each 3d-printed parts to attach an aluminum bar so it could hold up the new parts.
+- Attach and talk about prototypes.
 
 ## CAD
 <img width="197" height="301" alt="Screenshot 2025-07-17 131847" src="https://github.com/user-attachments/assets/9cdbcfd8-2198-4f01-b886-3e7c5629d10f" />
