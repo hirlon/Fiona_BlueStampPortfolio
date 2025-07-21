@@ -99,6 +99,88 @@ For my next milestone, I will be moving on to my intensive project.
 <img src="https://abhimahajan-1.github.io/Abhi_BlueStampPortfolio/schematics_3_revised_2.png" alt="Figure 1: Remote control and servos">
 Figure 1: A visual of the remote control and servos wiring (Taken from COKOINO).
 
+## Code (Modifications)
+```
+#include "src/CokoinoArm.h"
+#include <SoftwareSerial.h>
+
+int state=0;
+CokoinoArm arm;
+int xL,yL,xR,yR;
+SoftwareSerial BTSerial(3,2);
+const int act_max=10;    
+int act[act_max][4];   
+int num=0,num_do=0;
+
+void date_processing(int *x,int *y){
+  if(abs(512-*x)>abs(512-*y))
+    {*y = 512;}
+  else
+    {*x = 512;}
+}
+
+void C_action(void){
+  if(yR>800){
+    int *p;
+    p=arm.captureAction();
+    for(char i=0;i<4;i++){
+    act[num][i]=*p;
+    p=p+1;     
+    }
+    num++;
+  }
+}
+
+void setup() {
+  Serial.begin(9600);  //Initializes serial connection
+  BTSerial.begin(9600);    // Initializes bluetooth communication
+  // arm of servo motor connection pins
+  arm.ServoAttach(4,5,6,7,10);
+  // arm of joy stick connection pins : xL,yL,xR,yR
+  arm.JoyStickAttach(A0,A1,A2,A3);
+  // Sets all servo at 90 degrees
+  arm.servo1.write(90);
+  arm.servo2.write(90);
+  arm.servo3.write(90);
+  arm.servo4.write(90);
+  arm.servo5.write(90);  //Attaches new servo
+}
+
+void loop() {
+  if(BTSerial.available()>0){    // Allows devices to communicate wirelessly
+    state=BTSerial.read();    // This variable is used to determine which command had been received and what action the arm should perform.
+  }
+  if(state==1){
+    arm.down(22);
+  }
+  if(state==3){
+    arm.up(22);
+  }
+  if(state==5){
+    arm.left(20);
+  }
+  if(state==7){
+    arm.right(20);
+  }
+  if(state==9){
+    arm.open(20);
+  }
+  if(state==11){
+    arm.close(20);
+  }
+  if(state==13){
+    arm.servo1.write(90);
+    arm.servo2.write(90);
+    arm.servo3.write(90);
+    arm.servo4.write(90);
+    arm.servo5.write(90);
+  }
+  if(arm.servo4.read()<7){
+    arm.servo4.write(8);
+  }
+  Serial.println(state);
+}
+```
 ## Code (Milestone 3)
 ```
 #include "src/CokoinoArm.h"
