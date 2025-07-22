@@ -15,10 +15,11 @@ With the help of servos at each joint, the robotic arm is extremely flexible. Yo
 <img width="500" height="269.4" alt="image" src="https://github.com/user-attachments/assets/8f922a8a-4114-4bf7-ae3d-02fa3bc7f0e1" />
 
 ## Descriptions
-For my modifications, I added an extra joint on to the arm by using CAD (See attached drawings below).  On top of adding a 3d printed part, there's also an additional servo. The new servo is responsible for moving the robotic arm up/down along with servos 2 and 3. The robotic arm moves via classes (up, down, left, right, open, and close). 
-- Expand on what changed in the code library (src)
-- Had to change the speed of which servos 2,3,5 moved because it going too fast.
-- Drilled holes in the middle of each 3d-printed parts to attach an aluminum bar so it could hold up the new parts.
+For my modifications, I added an extra joint on to the arm by using CAD (See attached drawings below). On top of adding a 3d printed part, there's also an additional servo. The new servo is responsible for moving the robotic arm up/down along with servos 2 and 3. The robotic arm moves via classes (up, down, left, right, open, and close) and because I had to add a new servo, there had to be changes within the code library as well (see modification code below). After attaching the 3d-printed parts, I noticed that they were not stable at all. To solve this issue I drilled 2 holes in the middle of each parts and attached a m3*37mm aluminum column in between but it's better to CAD them in so the holes are symmetrical to each other.
+
+## Challenges
+One of the challenges that I ran in to during my modifications was my robotic arm moving way too fast. This caused the base to move around a lot. To solve this problem I went in to my arm code to slow down the movement.
+
 - Attach and talk about prototypes.
 
 ## CAD
@@ -29,8 +30,11 @@ Figure 1: Part used for servo extension (https://a360.co/4lDcxHp and https://a36
 <img width="500" height="324.94" alt="image" src="https://github.com/user-attachments/assets/71da1fec-1668-4747-9da3-7f00959259dc" />
 <img width="500" height="354.06" alt="image" src="https://github.com/user-attachments/assets/0a24160b-2795-4b2f-8afe-6e515940332e" />
 
-Figure 2: Dimensions for both parts
+Figure 2: Dimensions for both parts (I recommend making the holes .3 bigger)
 
+<img width="292" height="326" alt="Screenshot 2025-07-21 120932" src="https://github.com/user-attachments/assets/b945e493-a4e8-416b-a3bf-9736f5e2d490" />
+
+Figure 3: Prototypes
 
 # Third Milestone
 
@@ -45,7 +49,7 @@ For my third milestone I connected my robotic arm to my phone via an HC-05 bluet
 In bluetooth communication, there is a master/slave configuration, indicating which device will initiate/control the connection. I set my HC-05 as a slave because I want it to receive connections/signals from my phone which will act as the master. When connecting the bluetooth module, there are 2 modes: AT mode and bluetooth (data) mode. AT mode is used to configure/control the bluetooth module itself and bluetooth mode is just connecting and communicating with other bluetooth devices. In this case, we are using data mode so it can directly exchange data with my phone. The HC-05 also has 6 pins: State, VCC, GND, TXD, RXD, Key. Out of the 6 pins I connected 4 of them: VCC (provides power to the module), GND (ground connection), TXD (transmits data), and RXD (receives data). The TXD pin of one device must be connected to the RXD pin of the other device and vice versa because you cannot have 2 devices receiving/transmitting simultaneously. 
 
 ### PWM
-The servo I use is called a hobby servo which uses PWMs to control their position. They have 3 wires: power, ground, and control. The PWM signal that is sent ot the servo's control wire instructs the angle of the servo's output shaft. A PWM signal is a digital signal that represents analog values and it alternates between 2 voltage levels. One of the key things about PWMs is its duty cycle (The ratio of the "on" time to the total period of the signal). For example, if a PWM signal has a period of 10 milliseconds and is "on" for 3 milliseconds, its duty cycle is 30% (3 milliseconds/10 milliseconds). By changing the duty cycle, the average voltage delivered to my servo will vary (Higher duty cycle = higher average and lower duty cycle = low average voltage). So how does adjusting the duty cycle affect my servo? Adjusting the duty cycle affects how much voltage is delivered which in turn controls my servos speed from slow to fast. 
+The servo I use is called a hobby servo which uses PWMs to control their position. They have 3 wires: power, ground, and control. The PWM signal that is sent to the servo's control wire instructs the angle of the servo's output shaft. A PWM signal is a digital signal that represents analog values and it alternates between 2 voltage levels. One of the key things about PWMs is its duty cycle (The ratio of the "on" time to the total period of the signal). For example, if a PWM signal has a period of 10 milliseconds and is "on" for 3 milliseconds, its duty cycle is 30% (3 milliseconds/10 milliseconds). By changing the duty cycle, the average voltage delivered to my servo will vary (Higher duty cycle = higher average and lower duty cycle = low average voltage). So how does adjusting the duty cycle affect my servo? Adjusting the duty cycle affects how much voltage is delivered which in turn controls my servos speed from slow to fast. 
 
 ### MIT App Inventor
 <img width="887" height="462" alt="Screenshot 2025-07-15 110617" src="https://github.com/user-attachments/assets/7a207af4-49aa-49b3-9171-9f933fd79668" />
@@ -56,7 +60,7 @@ After attaching the HC-05 to my robotic arm, I created an app using the MIT app 
 One of the challenges I faced during my third milestone was my robotic arm moving by itself. Although I unplugged the pins from the joysticks, the servos were still receiving unwanted signals which conflicts with the signals I was originally trying to send. I fixed this by commenting out/deleting any code correlated to the joystick. Another challenge I had was my claw suddently not working, turns out the wires on the servo broke off so I just had to replace it.
 
 ## Next Steps
-For my modifications, I am planning to add more joints to my robotic arm using cadded parts.
+For my modifications, I am planning to add more joints to my robotic arm using CAD parts.
 
 # Second Milestone
 <iframe width="560" height="315" src="https://www.youtube.com/embed/s6oYnf6QK6A?si=ZWjJvlmnjy_reT9l" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
