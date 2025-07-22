@@ -20,8 +20,6 @@ For my modifications, I added an extra joint on to the arm by using CAD (See att
 ## Challenges
 One of the challenges that I ran in to during my modifications was my robotic arm moving way too fast. This caused the base to move around a lot. To solve this problem I went in to my arm code to slow down the movement.
 
-- Attach and talk about prototypes.
-
 ## CAD
 <img width="197" height="301" alt="Screenshot 2025-07-17 131847" src="https://github.com/user-attachments/assets/9cdbcfd8-2198-4f01-b886-3e7c5629d10f" />
 
