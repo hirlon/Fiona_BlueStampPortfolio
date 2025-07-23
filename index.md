@@ -13,10 +13,11 @@ With the help of servos at each joint, the robotic arm is extremely flexible. Yo
 
 # Modifications
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lFOH-m_WvOM?si=mVB9WOsfabjEWo9Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<img width="500" height="269.4" alt="image" src="https://github.com/user-attachments/assets/8f922a8a-4114-4bf7-ae3d-02fa3bc7f0e1" />
 
 ## Descriptions
-For my modifications, I added an extra joint on to the arm by using CAD (See attached drawings below). On top of adding a 3d printed part, there's also an additional servo. The new servo is responsible for moving the robotic arm up/down along with servos 2 and 3. The robotic arm moves via classes (up, down, left, right, open, and close) and because I had to add a new servo, there had to be changes within the code library as well (see modification code below). After attaching the 3d-printed parts, I noticed that they were not stable at all. To solve this issue I drilled 2 holes in the middle of each parts and attached a m3*37mm aluminum column in between but it's better to CAD them in so the holes are symmetrical to each other. The reason I chose this as my modification is because 
+For my modifications, I added an extra joint on to the arm by using CAD (See attached drawings below). On top of adding a 3d printed part, there's also an additional servo. The new servo is responsible for moving the robotic arm up/down along with servos 2 and 3. The robotic arm moves via classes (up, down, left, right, open, and close) and because I had to add a new servo, there had to be changes within the code library as well (see modification code below). After attaching the 3d-printed parts, I noticed that they were not stable at all. To solve this issue I drilled 2 holes in the middle of each parts and attached a m3*37mm aluminum column in between but it's better to CAD them in so the holes are symmetrical to each other.
+
+<img width="500" height="269.4" alt="image" src="https://github.com/user-attachments/assets/8f922a8a-4114-4bf7-ae3d-02fa3bc7f0e1" />
 
 ## Challenges
 One of the challenges that I ran in to during my modifications was my robotic arm moving way too fast. This caused the base to move around a lot. To solve this problem I went in to my arm code to slow down the movement.
